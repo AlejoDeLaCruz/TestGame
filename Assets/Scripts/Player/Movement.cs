@@ -91,6 +91,7 @@ namespace MovementScript
 
         void Falling()
         {
+            //Agrega una fuerza extra para tirar al jugador hacia abajo
             rb.AddForce(fuerzaExtra * Physics.gravity);
         }
 
