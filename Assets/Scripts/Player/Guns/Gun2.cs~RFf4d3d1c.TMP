@@ -1,0 +1,122 @@
+using UnityEngine;
+
+public class Gun2 : MonoBehaviour
+{
+    public float pushForce = 10f; // Fuerza de empuje
+    public float pushRange = 7f; // Alcance del empuje
+    public LayerMask pushableLayer; // Capa de objetos empujables
+    public float cooldownTime = 1f; // Tiempo de reutilización en segundos
+
+    private bool canShoot = true; // Controla si el disparo está disponible
+    private Gun gunScript; // Referencia al script Gun
+    public Rigidbody playerRigidbody; // Referencia al Rigidbody del jugador
+    public Transform playerTransform; // Referencia al Transform del jugador
+    public LayerMask groundLayer; // Capa que define el suelo
+
+    void Start()
+    {
+        PlayerShoot.rightClickInput += AttemptExpulse; // Vincula el clic derecho a AttemptExpulse
+    }
+
+    void OnDestroy()
+    {
+        PlayerShoot.rightClickInput -= AttemptExpulse; // Desvincula al destruir el objeto
+    }
+
+    void AttemptExpulse()
+    {
+        if (canShoot)
+        {
+            Expulse();
+            StartCoroutine(Cooldown());
+        }
+        else
+        {
+            Debug.Log("Disparo en cooldown. Espera para disparar de nuevo.");
+        }
+    }
+
+    void Expulse()
+    {
+        Debug.Log("Empuje activado!");
+
+        // Forzar la liberación del objeto sostenido si lo hay
+        gunScript?.ReleaseObject();
+
+        // Detectar objetos en el rango
+        Collider[] objectsInRange = Physics.OverlapSphere(transform.position, pushRange, pushableLayer);
+        foreach (Collider obj in objectsInRange)
+        {
+            Rigidbody rb = obj.GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                Vector3 pushDirection = (obj.transform.position - transform.position).normalized;
+                rb.AddForce(pushDirection * pushForce, ForceMode.Impulse);
+                Debug.Log($"Empujado: {obj.name}");
+            }
+        }
+
+        // Aplicar empuje al jugador
+        if (IsPlayerInAir())
+        {
+            ApplyPlayerPushback();
+        }
+    }
+
+    bool IsPlayerInAir()
+    {
+        float raycastDistance = 3f;
+        Vector3 rayOrigin = playerTransform.position + Vector3.up * 0.1f;
+        bool isGrounded = Physics.Raycast(rayOrigin, Vector3.down, raycastDistance, groundLayer);
+
+        Debug.DrawRay(rayOrigin, Vector3.down * raycastDistance, Color.red, 1f);
+        return !isGrounded;
+    }
+
+    void ApplyPlayerPushback()
+    {
+        if (playerRigidbody == null)
+        {
+            Debug.LogWarning("Rigidbody del jugador no asignado.");
+            return;
+        }
+
+        Debug.Log(playerTransform.forward.y);
+
+        // Si la cámara está mirando hacia abajo (componente Y negativa), aplica fuerza hacia arriba
+        if (playerTransform.forward.y < 9)
+        {
+            // Aplica una fuerza únicamente en el eje Y (hacia arriba)
+            playerRigidbody.AddForce(Vector3.up * pushForce, ForceMode.Impulse);
+            Debug.Log("Jugador empujado hacia arriba porque está mirando hacia abajo.");
+        }
+        else
+        {
+            // Si no está mirando hacia abajo, aplica la fuerza en la dirección opuesta a la mirada
+            Vector3 forward = playerTransform.forward;
+            forward.y = 0; // Descartamos la componente Y para que no afecte el empuje horizontal
+            forward.Normalize(); // Normalizamos para evitar aplicar más fuerza de la necesaria
+
+            // Calcula la dirección contraria para el empuje horizontal
+            Vector3 pushDirection = -forward;
+
+            // Aplica la fuerza horizontal
+            playerRigidbody.AddForce(pushDirection * pushForce, ForceMode.Impulse);
+            Debug.Log($"Jugador empujado en dirección horizontal: {pushDirection}");
+        }
+    }
+
+    System.Collections.IEnumerator Cooldown()
+    {
+        canShoot = false;
+        yield return new WaitForSeconds(cooldownTime);
+        canShoot = true;
+        Debug.Log("Disparo listo nuevamente.");
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, pushRange);
+    }
+}

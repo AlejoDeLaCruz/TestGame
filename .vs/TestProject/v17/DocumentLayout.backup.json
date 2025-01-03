@@ -1,0 +1,106 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Unity games\\TestProject\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4CE07701-134F-9DD0-F36C-F385BB4D61DF}|Assembly-CSharp.csproj|d:\\unity games\\testproject\\assets\\scripts\\player\\movement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4CE07701-134F-9DD0-F36C-F385BB4D61DF}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\movement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4CE07701-134F-9DD0-F36C-F385BB4D61DF}|Assembly-CSharp.csproj|D:\\Unity games\\TestProject\\assets\\scripts\\player\\guns\\gun2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4CE07701-134F-9DD0-F36C-F385BB4D61DF}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\guns\\gun2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4CE07701-134F-9DD0-F36C-F385BB4D61DF}|Assembly-CSharp.csproj|D:\\Unity games\\TestProject\\assets\\scripts\\player\\playercam.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4CE07701-134F-9DD0-F36C-F385BB4D61DF}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\playercam.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4CE07701-134F-9DD0-F36C-F385BB4D61DF}|Assembly-CSharp.csproj|D:\\Unity games\\TestProject\\assets\\scripts\\player\\guns\\playershoot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4CE07701-134F-9DD0-F36C-F385BB4D61DF}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\guns\\playershoot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4CE07701-134F-9DD0-F36C-F385BB4D61DF}|Assembly-CSharp.csproj|D:\\Unity games\\TestProject\\assets\\scripts\\player\\guns\\gun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4CE07701-134F-9DD0-F36C-F385BB4D61DF}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\guns\\gun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Gun.cs",
+              "DocumentMoniker": "D:\\Unity games\\TestProject\\Assets\\Scripts\\Player\\Guns\\Gun.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\Guns\\Gun.cs",
+              "ToolTip": "D:\\Unity games\\TestProject\\Assets\\Scripts\\Player\\Guns\\Gun.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Player\\Guns\\Gun.cs",
+              "ViewState": "AgIAAJsAAAAAAAAAAAA6wBABAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-23T18:38:10.954Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Movement.cs",
+              "DocumentMoniker": "D:\\Unity games\\TestProject\\Assets\\Scripts\\Player\\Movement.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\Movement.cs",
+              "ToolTip": "D:\\Unity games\\TestProject\\Assets\\Scripts\\Player\\Movement.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Player\\Movement.cs",
+              "ViewState": "AgIAADwAAAAAAAAAAAAYwBMAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-10T22:54:02.588Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Gun2.cs",
+              "DocumentMoniker": "D:\\Unity games\\TestProject\\Assets\\Scripts\\Player\\Guns\\Gun2.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\Guns\\Gun2.cs",
+              "ToolTip": "D:\\Unity games\\TestProject\\Assets\\Scripts\\Player\\Guns\\Gun2.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Player\\Guns\\Gun2.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFQAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-01T23:16:47.95Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PlayerShoot.cs",
+              "DocumentMoniker": "D:\\Unity games\\TestProject\\Assets\\Scripts\\Player\\Guns\\PlayerShoot.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\Guns\\PlayerShoot.cs",
+              "ToolTip": "D:\\Unity games\\TestProject\\Assets\\Scripts\\Player\\Guns\\PlayerShoot.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Player\\Guns\\PlayerShoot.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-23T18:38:10.468Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PlayerCam.cs",
+              "DocumentMoniker": "D:\\Unity games\\TestProject\\Assets\\Scripts\\Player\\PlayerCam.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\PlayerCam.cs",
+              "ToolTip": "D:\\Unity games\\TestProject\\Assets\\Scripts\\Player\\PlayerCam.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Player\\PlayerCam.cs",
+              "ViewState": "AgIAACUAAAAAAAAAAAAkwDYAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-23T17:29:50.099Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

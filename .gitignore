@@ -1,0 +1,12 @@
+### Unity generated files
+[Ll]ibrary/
+[Ll]ogs/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Uu]ser[Ss]ettings/
+[Aa]ssets/AssetStoreTools*
+*.csproj
+*.sln
+*.userprefs
