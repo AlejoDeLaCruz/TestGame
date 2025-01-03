@@ -43,8 +43,7 @@
               "ViewState": "AgIAAJsAAAAAAAAAAAA6wBABAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-23T18:38:10.954Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -69,8 +68,7 @@
               "RelativeToolTip": "Assets\\Scripts\\Player\\Guns\\Gun2.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAFQAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-01T23:16:47.95Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-01T23:16:47.95Z"
             },
             {
               "$type": "Document",
@@ -82,8 +80,7 @@
               "RelativeToolTip": "Assets\\Scripts\\Player\\Guns\\PlayerShoot.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-23T18:38:10.468Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-23T18:38:10.468Z"
             },
             {
               "$type": "Document",
@@ -95,8 +92,7 @@
               "RelativeToolTip": "Assets\\Scripts\\Player\\PlayerCam.cs",
               "ViewState": "AgIAACUAAAAAAAAAAAAkwDYAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-23T17:29:50.099Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-23T17:29:50.099Z"
             }
           ]
         }

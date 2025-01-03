@@ -91,7 +91,6 @@ namespace MovementScript
 
         void Falling()
         {
-            // Aplica una fuerza extra para caer m�s r�pido, si es necesario
             rb.AddForce(fuerzaExtra * Physics.gravity);
         }
 
