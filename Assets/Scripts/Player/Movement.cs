@@ -44,7 +44,7 @@ namespace MovementScript
         private float lastKeyTime;
         private float doubleTapTime = 0.3f;  
         private float sprintMultiplier = 1.5f;
-        private float doubleSprintMultiplier = 3.5f; 
+        private float doubleSprintMultiplier = 2f; 
         private float originalMoveSpeed;
 
         void Start()
