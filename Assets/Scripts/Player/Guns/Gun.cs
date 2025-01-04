@@ -1,5 +1,6 @@
 using MovementScript;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Gun : MonoBehaviour
@@ -12,7 +13,8 @@ public class Gun : MonoBehaviour
     public float defaultHoldDistance = 5f;
     public float increasedHoldDistance = 3f;
     public float stopAttractionDistance = 1f; // Distancia mínima para detener la atracción
-    private GameObject heldObject = null;
+
+    private List<GameObject> heldObjects = new List<GameObject>();
     private float holdDistance;
     private bool canPickUp = true;
 
@@ -47,13 +49,13 @@ public class Gun : MonoBehaviour
             {
                 AttractPlayerToSurface();
             }
-            else if (heldObject == null && canPickUp)
+            else if (heldObjects.Count == 0 && canPickUp)
             {
-                TryPickUpObject();
+                TryPickUpObjects();
             }
-            else if (heldObject != null)
+            else if (heldObjects.Count > 0)
             {
-                HoldObjectInAir();
+                HoldObjectsInAir();
             }
         }
         else
@@ -62,15 +64,15 @@ public class Gun : MonoBehaviour
             {
                 StopAttraction();
             }
-            else if (heldObject != null)
+            else if (heldObjects.Count > 0)
             {
-                ReleaseObject();
+                ReleaseObjects();
             }
         }
 
-        if (Input.GetMouseButtonDown(1) && heldObject != null)
+        if (Input.GetMouseButtonDown(1) && heldObjects.Count > 0)
         {
-            ExpulseObject();
+            ExpulseObjects();
         }
 
         if (Input.GetKeyDown(KeyCode.Q) && canActivateHeavyMode)
@@ -86,41 +88,29 @@ public class Gun : MonoBehaviour
         lastCameraRotation = currentRotation;
     }
 
-    public void ReleaseObject()
+    public void ReleaseObjects()
     {
-        if (heldObject == null) return;
-
-        Rigidbody rb = heldObject.GetComponent<Rigidbody>();
-        if (rb != null)
+        foreach (var obj in heldObjects)
         {
-            rb.useGravity = true;
-
-            // Calcular la fuerza a aplicar basado en la velocidad angular de la cámara
-            float angularSpeed = cameraAngularVelocity.magnitude;
-            Vector3 forceDirection = playerCamera.transform.forward;
-
-            // Calcular la fuerza original
-            Vector3 force = forceDirection * angularSpeed * 0.1f;
-
-            // Limitar la fuerza máxima
-            float maxForce = 4f; // Define un valor máximo para la fuerza
-            if (force.magnitude > maxForce)
+            Rigidbody rb = obj.GetComponent<Rigidbody>();
+            if (rb != null)
             {
-                force = force.normalized * maxForce; // Normaliza el vector y lo escala a la fuerza máxima
+                rb.useGravity = true;
+
+                float angularSpeed = cameraAngularVelocity.magnitude;
+                Vector3 forceDirection = playerCamera.transform.forward;
+                Vector3 force = forceDirection * angularSpeed * 0.1f;
+
+                float maxForce = 4f;
+                if (force.magnitude > maxForce)
+                {
+                    force = force.normalized * maxForce;
+                }
+
+                rb.AddForce(force, ForceMode.Impulse);
             }
-
-            // Aplicar la fuerza al Rigidbody
-            rb.AddForce(force, ForceMode.Impulse);
         }
-
-        heldObject = null;
-    }
-
-    void AttractToObject(GameObject targetObject, Vector3 hitPoint)
-    {
-        isBeingAttracted = true;
-        attractionTarget = targetObject;
-        attractionPoint = hitPoint; // Usar el punto exacto donde el rayo impacta en el objeto
+        heldObjects.Clear();
     }
 
     void AttractPlayerToSurface()
@@ -167,13 +157,13 @@ public class Gun : MonoBehaviour
         }
     }
 
-    void TryPickUpObject()
+    void TryPickUpObjects()
     {
         if (!canPickUp) return;
 
+        // Detectar el objeto apuntado por el RayCast
         RaycastHit hit;
         Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
-
         if (Physics.Raycast(ray, out hit, detectionRange))
         {
             GameObject targetObject = hit.collider.gameObject;
@@ -183,82 +173,84 @@ public class Gun : MonoBehaviour
             float playerScaleSum = player.transform.localScale.x + player.transform.localScale.y + player.transform.localScale.z;
             float targetScaleSum = targetObject.transform.localScale.x + targetObject.transform.localScale.y + targetObject.transform.localScale.z;
 
+            // Priorizar atraer hacia el objeto más grande
             if (targetScaleSum > playerScaleSum && !heavyModeActive)
             {
                 AttractToObject(targetObject, hit.point);
             }
             else
             {
+                // Si no está apuntando hacia un objeto grande, recoger los pequeños
+                if (heldObjects.Count == 0)
+                {
+                    PickUpObject(targetObject);
+                }
+            }
+        }
+
+        float smallObjectsRange = detectionRange * 0.6f; // Rango reducido para objetos pequeños
+
+        // Recoger objetos pequeños dentro del rango reducido
+        Collider[] colliders = Physics.OverlapSphere(playerCamera.transform.position, smallObjectsRange);
+
+        foreach (var collider in colliders)
+        {
+            GameObject targetObject = collider.gameObject;
+
+            if (targetObject.layer == LayerMask.NameToLayer("littleObjectToPickUp"))
+            {
                 PickUpObject(targetObject);
             }
         }
     }
 
+    void AttractToObject(GameObject targetObject, Vector3 hitPoint)
+    {
+        isBeingAttracted = true;
+        attractionTarget = targetObject;
+        attractionPoint = hitPoint; // Usar el punto exacto donde el rayo impacta en el objeto
+    }
+
     void PickUpObject(GameObject targetObject)
     {
-        heldObject = targetObject;
+        if (heldObjects.Contains(targetObject)) return;
 
-        Rigidbody rb = heldObject.GetComponent<Rigidbody>();
+        heldObjects.Add(targetObject);
+
+        Rigidbody rb = targetObject.GetComponent<Rigidbody>();
         if (rb != null)
         {
             rb.useGravity = false;
             rb.linearVelocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
         }
-
-        holdDistance = targetObject.transform.localScale.magnitude < player.transform.localScale.magnitude
-            ? increasedHoldDistance
-            : defaultHoldDistance;
-
-        Vector3 initialPosition = targetObject.transform.position;
-        Vector3 targetPosition = playerCamera.transform.position + playerCamera.transform.forward * holdDistance;
-
-        StartCoroutine(MoveToPosition(targetObject, initialPosition, targetPosition));
     }
 
-    IEnumerator MoveToPosition(GameObject obj, Vector3 start, Vector3 end)
+    void HoldObjectsInAir()
     {
-        float progress = 0f;
-
-        float playerScaleSum = player.transform.localScale.x + player.transform.localScale.y + player.transform.localScale.z;
-        float targetScaleSum = obj.transform.localScale.x + obj.transform.localScale.y + obj.transform.localScale.z;
-
-        float adjustedAttractionSpeed = attractAnObjectForce / Mathf.Max(1f, targetScaleSum / playerScaleSum);
-
-        while (progress < 1f && heldObject == obj)
-        {
-            progress += Time.deltaTime * adjustedAttractionSpeed;
-            obj.transform.position = Vector3.Lerp(start, end, progress);
-            yield return null;
-        }
-    }
-
-    void HoldObjectInAir()
-    {
-        if (heldObject == null) return;
-
+        Vector3 basePosition = playerCamera.transform.position;
         Vector3 direction = playerCamera.transform.forward;
-        Vector3 targetPosition = playerCamera.transform.position + direction * holdDistance;
 
-        Rigidbody rb = heldObject.GetComponent<Rigidbody>();
-        if (rb != null)
+        for (int i = 0; i < heldObjects.Count; i++)
         {
-            rb.linearVelocity = Vector3.zero;
-            rb.angularVelocity = Vector3.zero;
+            GameObject obj = heldObjects[i];
+            Vector3 targetPosition = basePosition + direction * (defaultHoldDistance + i * 0.5f);
+
+            Rigidbody rb = obj.GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                rb.linearVelocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
+            }
+
+            obj.transform.position = Vector3.Lerp(obj.transform.position, targetPosition, attractAnObjectForce * Time.deltaTime);
+            obj.transform.rotation = Quaternion.Lerp(obj.transform.rotation, Quaternion.identity, attractAnObjectForce * Time.deltaTime);
         }
-
-        float playerScaleSum = player.transform.localScale.x + player.transform.localScale.y + player.transform.localScale.z;
-        float targetScaleSum = heldObject.transform.localScale.x + heldObject.transform.localScale.y + heldObject.transform.localScale.z;
-
-        float adjustedAttractionSpeed = attractAnObjectForce / Mathf.Max(1f, targetScaleSum / playerScaleSum);
-
-        heldObject.transform.position = Vector3.Lerp(heldObject.transform.position, targetPosition, adjustedAttractionSpeed * Time.deltaTime);
-        heldObject.transform.rotation = Quaternion.Lerp(heldObject.transform.rotation, Quaternion.identity, adjustedAttractionSpeed * Time.deltaTime);
     }
 
-    void ExpulseObject()
+    void ExpulseObjects()
     {
-        ReleaseObject();
+        ReleaseObjects();
         StartCoroutine(CooldownPickUp());
     }
 
@@ -266,6 +258,7 @@ public class Gun : MonoBehaviour
     {
         return heavyModeActive;
     }
+
     IEnumerator CooldownPickUp()
     {
         canPickUp = false;

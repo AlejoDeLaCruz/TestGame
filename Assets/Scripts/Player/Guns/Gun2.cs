@@ -8,6 +8,7 @@ public class Gun2 : MonoBehaviour
     public float rayWidth; // Ancho del rayo (simula un rayo grueso)
     public LayerMask ejectableObjectLayer; // Capa de objetos que siempre pueden ser expulsados
     public LayerMask heavyObjectToEjectLayer; // Capa de objetos pesados a expulsar solo si el modo pesado está activado
+    public LayerMask littleObjectToEjectLayer; // Capa de objetos pequeños a expulsar
     public float cooldownTime = 1f; // Tiempo de reutilización en segundos
     public float heavyChargeTime = 2f; // Tiempo máximo para cargar fuerza pesada
     public Camera playerCamera; // La cámara del jugador
@@ -78,7 +79,7 @@ public class Gun2 : MonoBehaviour
 
         // Área de detección (radio del cono)
         float detectionRadius = rayWidth; // Radio del área de detección
-        Collider[] colliders = Physics.OverlapSphere(rayOrigin, detectionRadius, ejectableObjectLayer | heavyObjectToEjectLayer);
+        Collider[] colliders = Physics.OverlapSphere(rayOrigin, detectionRadius, ejectableObjectLayer | heavyObjectToEjectLayer | littleObjectToEjectLayer);
 
         Debug.Log($"Cantidad de objetos dentro del área: {colliders.Length}");
 
@@ -122,6 +123,12 @@ public class Gun2 : MonoBehaviour
                 // Aplica fuerza para objetos que siempre pueden ser expulsados
                 rb.AddForce(pushDirection * pushForce, ForceMode.Impulse);
                 Debug.Log($"Objeto {collider.name} empujado con fuerza {pushForce}");
+            }
+            else if (((1 << collider.gameObject.layer) & littleObjectToEjectLayer) != 0)
+            {
+                // Aplica fuerza para los objetos pequeños que también deben ser expulsados
+                rb.AddForce(pushDirection * pushForce, ForceMode.Impulse);
+                Debug.Log($"Objeto pequeño {collider.name} empujado con fuerza {pushForce}");
             }
         }
     }
