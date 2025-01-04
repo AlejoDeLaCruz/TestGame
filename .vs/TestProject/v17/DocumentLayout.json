@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\alejo\\Documents\\GitHub\\TestGame2\\TestProject\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4CE07701-134F-9DD0-F36C-F385BB4D61DF}|Assembly-CSharp.csproj|c:\\users\\alejo\\documents\\github\\testgame2\\testproject\\assets\\scripts\\player\\movement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4CE07701-134F-9DD0-F36C-F385BB4D61DF}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\movement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{4CE07701-134F-9DD0-F36C-F385BB4D61DF}|Assembly-CSharp.csproj|C:\\Users\\alejo\\Documents\\GitHub\\TestGame2\\TestProject\\assets\\scripts\\player\\guns\\gun2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4CE07701-134F-9DD0-F36C-F385BB4D61DF}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\guns\\gun2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4CE07701-134F-9DD0-F36C-F385BB4D61DF}|Assembly-CSharp.csproj|C:\\Users\\alejo\\Documents\\GitHub\\TestGame2\\TestProject\\assets\\scripts\\player\\guns\\gun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4CE07701-134F-9DD0-F36C-F385BB4D61DF}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\guns\\gun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4CE07701-134F-9DD0-F36C-F385BB4D61DF}|Assembly-CSharp.csproj|c:\\users\\alejo\\documents\\github\\testgame2\\testproject\\assets\\scripts\\player\\movement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4CE07701-134F-9DD0-F36C-F385BB4D61DF}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\movement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4CE07701-134F-9DD0-F36C-F385BB4D61DF}|Assembly-CSharp.csproj|C:\\Users\\alejo\\Documents\\GitHub\\TestGame2\\TestProject\\assets\\scripts\\player\\playercam.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -17,10 +21,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{4CE07701-134F-9DD0-F36C-F385BB4D61DF}|Assembly-CSharp.csproj|C:\\Users\\alejo\\Documents\\GitHub\\TestGame2\\TestProject\\assets\\scripts\\player\\guns\\playershoot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4CE07701-134F-9DD0-F36C-F385BB4D61DF}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\guns\\playershoot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4CE07701-134F-9DD0-F36C-F385BB4D61DF}|Assembly-CSharp.csproj|C:\\Users\\alejo\\Documents\\GitHub\\TestGame2\\TestProject\\assets\\scripts\\player\\guns\\gun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4CE07701-134F-9DD0-F36C-F385BB4D61DF}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\guns\\gun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,24 +30,25 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "Gun.cs",
               "DocumentMoniker": "C:\\Users\\alejo\\Documents\\GitHub\\TestGame2\\TestProject\\Assets\\Scripts\\Player\\Guns\\Gun.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\Guns\\Gun.cs",
               "ToolTip": "C:\\Users\\alejo\\Documents\\GitHub\\TestGame2\\TestProject\\Assets\\Scripts\\Player\\Guns\\Gun.cs",
               "RelativeToolTip": "Assets\\Scripts\\Player\\Guns\\Gun.cs",
-              "ViewState": "AgIAAJsAAAAAAAAAAAA6wBABAAAZAAAAAAAAAA==",
+              "ViewState": "AgIAAO8AAAAAAAAAAAAAwAABAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-23T18:38:10.954Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Movement.cs",
               "DocumentMoniker": "C:\\Users\\alejo\\Documents\\GitHub\\TestGame2\\TestProject\\Assets\\Scripts\\Player\\Movement.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\Movement.cs",
@@ -60,19 +61,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Gun2.cs",
               "DocumentMoniker": "C:\\Users\\alejo\\Documents\\GitHub\\TestGame2\\TestProject\\Assets\\Scripts\\Player\\Guns\\Gun2.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\Guns\\Gun2.cs",
               "ToolTip": "C:\\Users\\alejo\\Documents\\GitHub\\TestGame2\\TestProject\\Assets\\Scripts\\Player\\Guns\\Gun2.cs",
               "RelativeToolTip": "Assets\\Scripts\\Player\\Guns\\Gun2.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFQAAAAwAAAAAAAAAA==",
+              "ViewState": "AgIAAG0AAAAAAAAAAAAkwJ0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-01T23:16:47.95Z"
+              "WhenOpened": "2025-01-01T23:16:47.95Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "PlayerShoot.cs",
               "DocumentMoniker": "C:\\Users\\alejo\\Documents\\GitHub\\TestGame2\\TestProject\\Assets\\Scripts\\Player\\Guns\\PlayerShoot.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\Guns\\PlayerShoot.cs",
@@ -84,7 +86,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "PlayerCam.cs",
               "DocumentMoniker": "C:\\Users\\alejo\\Documents\\GitHub\\TestGame2\\TestProject\\Assets\\Scripts\\Player\\PlayerCam.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\PlayerCam.cs",

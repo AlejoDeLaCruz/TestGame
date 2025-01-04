@@ -188,7 +188,7 @@ public class Gun : MonoBehaviour
             }
         }
 
-        float smallObjectsRange = detectionRange * 0.6f; // Rango reducido para objetos pequeños
+        float smallObjectsRange = detectionRange * 0.5f; // Rango reducido para objetos pequeños
 
         // Recoger objetos pequeños dentro del rango reducido
         Collider[] colliders = Physics.OverlapSphere(playerCamera.transform.position, smallObjectsRange);
