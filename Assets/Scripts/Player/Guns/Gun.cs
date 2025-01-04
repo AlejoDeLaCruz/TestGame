@@ -188,6 +188,9 @@ public class Gun : MonoBehaviour
             }
         }
 
+        // Evitar recoger objetos pequeños si se está sosteniendo un objeto mediano
+        if (IsHoldingMediumObject()) return;
+
         float smallObjectsRange = detectionRange * 0.5f; // Rango reducido para objetos pequeños
 
         // Recoger objetos pequeños dentro del rango reducido
@@ -202,6 +205,19 @@ public class Gun : MonoBehaviour
                 PickUpObject(targetObject);
             }
         }
+    }
+
+    // Verifica si el jugador está sosteniendo un objeto mediano (capa ejectableObject)
+    bool IsHoldingMediumObject()
+    {
+        foreach (var obj in heldObjects)
+        {
+            if (obj.layer == LayerMask.NameToLayer("ejectableObject"))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     void AttractToObject(GameObject targetObject, Vector3 hitPoint)
