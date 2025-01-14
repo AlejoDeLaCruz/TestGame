@@ -259,10 +259,20 @@ public class Gun : MonoBehaviour
                 rb.angularVelocity = Vector3.zero;
             }
 
-            obj.transform.position = Vector3.Lerp(obj.transform.position, targetPosition, attractAnObjectForce * Time.deltaTime);
-            obj.transform.rotation = Quaternion.Lerp(obj.transform.rotation, Quaternion.identity, attractAnObjectForce * Time.deltaTime);
+            // Ajustar la fuerza de atracción si el modo pesado está activado
+            float adjustedAttractForce = attractAnObjectForce;
+
+            if (heavyModeActive && obj.layer == LayerMask.NameToLayer("heavyObjectToEject"))
+            {
+                adjustedAttractForce *= 0.05f; // Reducir la fuerza de atracción al 50% para objetos pesados
+            }
+
+            // Aplicar interpolación con la fuerza ajustada
+            obj.transform.position = Vector3.Lerp(obj.transform.position, targetPosition, adjustedAttractForce * Time.deltaTime);
+            obj.transform.rotation = Quaternion.Lerp(obj.transform.rotation, Quaternion.identity, adjustedAttractForce * Time.deltaTime);
         }
     }
+
 
     void ExpulseObjects()
     {

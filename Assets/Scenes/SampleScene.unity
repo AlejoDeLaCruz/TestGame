@@ -3100,7 +3100,7 @@ MonoBehaviour:
   playerCamera: {fileID: 2034920175}
   detectionRange: 30
   attractToObjectForce: 35
-  attractAnObjectForce: 5
+  attractAnObjectForce: 10
   defaultHoldDistance: 4
   increasedHoldDistance: 3
   stopAttractionDistance: 1
