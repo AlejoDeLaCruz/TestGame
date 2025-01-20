@@ -3099,7 +3099,7 @@ MonoBehaviour:
   player: {fileID: 1831656993}
   playerCamera: {fileID: 2034920175}
   detectionRange: 30
-  attractToObjectForce: 35
+  attractToObjectForce: 40
   attractAnObjectForce: 10
   defaultHoldDistance: 4
   increasedHoldDistance: 3
@@ -5295,7 +5295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac66460044a32b24d9cca9b7338c7e79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 18
+  moveSpeed: 22
   groundDrag: 12
   playerHeight: 2
   jumpForce: 10
